@@ -1,6 +1,6 @@
 let step = "";
 let winner = "";
-let spanWho = document.getElementById('spanWho');
+const spanWho = document.getElementById('spanWho');
 
 const who = () =>{
     if(step === 'krest'){
@@ -14,7 +14,7 @@ const who = () =>{
 
 who();
 
-let blockItem = document.querySelectorAll('.blockItem');
+const blockItem = document.querySelectorAll('.blockItem');
 let counter = 0;
 
 blockItem.forEach((item)=>{
@@ -44,7 +44,7 @@ let win = [
     [2,4,6]
 ]
 
-let circleWin = () =>{
+const circleWin = () =>{
     for(let i = 0; i < win.length; i++){
         if(
             blockItem[win[i][0]].classList.contains('circle') &&
@@ -57,12 +57,12 @@ let circleWin = () =>{
 
             winner = 'Нолики';
             endGame(winner);
-            return 1
+            return 1;
         }
     }
 }
 
-let krestWin = () =>{
+const krestWin = () =>{
     for(let i = 0; i < win.length; i++){
         if(
             blockItem[win[i][0]].classList.contains('krest') &&
@@ -74,28 +74,29 @@ let krestWin = () =>{
             blockItem[win[i][2]].classList.add('winColor');
 
             winner = 'Крестики';
-            endGame(winner)
-            return 1
+            endGame(winner);
+            return 1;
         }
     }
 }
 
-let noWin = () =>{
+const noWin = () =>{
     if(!krestWin() && !circleWin() && counter >=9){
         winner = 'Ничья';
         endGame(winner);
     }
 }
 
-let blockArea = document.getElementById('blockArea');
-let blockWinner = document.getElementById('blockWinner');
-let spanWin = document.getElementById('spanWin');
-let btnNewGame = document.getElementById('btnNewGame');
+const blockArea = document.getElementById('blockArea');
+const blockWinner = document.getElementById('blockWinner');
+const spanWin = document.getElementById('spanWin');
+const btnNewGame = document.getElementById('btnNewGame');
 
-let endGame = (winner) => {
+const endGame = (winner) => {
     blockArea.style.pointerEvents = 'none';
     blockWinner.style.display = 'flex';
     spanWin.innerText = winner;
+    spanWho.innerText = '';
 }
 
 btnNewGame.addEventListener('click', () =>{
